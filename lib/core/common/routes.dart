@@ -1,4 +1,4 @@
-import 'package:brik_test/feature/home/presentation/page/home_page.dart';
+import 'package:brik_test/feature/home/presentation/page/groceries_page.dart';
 import 'package:brik_test/feature/testing/presentation/page/testing_page.dart';
 import 'package:flutter/material.dart';
 
@@ -16,7 +16,7 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       );
     case Routes.homePage:
       return MaterialPageRoute(
-        builder: (BuildContext context) => const HomePage(),
+        builder: (BuildContext context) => const GroceriesPage(),
         settings: settings,
       );
     default:

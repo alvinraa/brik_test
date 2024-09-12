@@ -7,15 +7,15 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class HomePage extends StatefulWidget {
+class GroceriesPage extends StatefulWidget {
   final dynamic data;
-  const HomePage({super.key, this.data});
+  const GroceriesPage({super.key, this.data});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<GroceriesPage> createState() => _GroceriesPageState();
 }
 
-class _HomePageState extends State<HomePage>
+class _GroceriesPageState extends State<GroceriesPage>
     with SingleTickerProviderStateMixin {
   final _scrollController = ScrollController();
   // list of bloc
