@@ -1,8 +1,10 @@
 import 'package:brik_test/core/common/logger.dart';
-import 'package:brik_test/feature/home/data/model/groceries_model.dart';
+import 'package:brik_test/feature/home/bloc/groceries_list/groceries_list_bloc.dart';
+import 'package:brik_test/feature/home/data/model/klontong_response.dart';
 import 'package:brik_test/feature/home/presentation/widget/groceries_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class HomePage extends StatefulWidget {
@@ -16,37 +18,24 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage>
     with SingleTickerProviderStateMixin {
   final _scrollController = ScrollController();
+  // list of bloc
+  late GroceriesListBloc groceriesListBloc;
+
+  // tab Controller
   TabController? _tabController;
   int _selectedIndex = 0;
   List<Widget> klobAndCoMenu = [
-    // all
-    Container(
-      height: 200,
-      color: Colors.red,
-      child: const Center(
-        child: Text('this is all'),
-      ),
-    ),
-    // foods
-    Container(
-      height: 200,
-      color: Colors.yellow,
-      child: const Center(
-        child: Text('this is food'),
-      ),
-    ),
-    // drinks
-    Container(
-      height: 200,
-      color: Colors.green,
-      child: const Center(
-        child: Text('this is drink'),
-      ),
-    ),
+    Container(), // all
+    Container(), // food
+    Container(), // drink
   ];
 
   @override
   void initState() {
+    // init bloc
+    groceriesListBloc = GroceriesListBloc();
+    groceriesListBloc.add(GetGroceriesListRequest());
+
     // handle tab controller
     _tabController = TabController(length: 3, vsync: this);
     _tabController!.index = _selectedIndex;
@@ -113,8 +102,6 @@ class _HomePageState extends State<HomePage>
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      // controller: _scrollController,
-      // physics: const AlwaysScrollableScrollPhysics(),
       children: [
         // header
         Container(
@@ -137,7 +124,7 @@ class _HomePageState extends State<HomePage>
                 style: GoogleFonts.lato(
                   textStyle: textTheme.labelLarge?.copyWith(
                     color: Colors.black,
-                    fontSize: 36,
+                    fontSize: 30,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -192,26 +179,45 @@ class _HomePageState extends State<HomePage>
   }
 
   Widget all() {
-    return buildListAll();
+    return BlocBuilder(
+      bloc: groceriesListBloc,
+      builder: (context, state) {
+        if (state is GetGroceriesListLoading) {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        }
+
+        if (state is GetGroceriesListError) {
+          Center(child: Text(state.errorMessage ?? "-"));
+        }
+
+        return buildListAll(context, state);
+      },
+    );
   }
 
-  Widget buildListAll() {
+  Widget buildListAll(BuildContext context, Object? state) {
     // var textTheme = Theme.of(context).textTheme;
     var colorScheme = Theme.of(context).colorScheme;
+
+    List<GroceriesModel> listGroceries = [];
+    listGroceries = groceriesListBloc.listGroceries;
 
     return RefreshIndicator(
       onRefresh: () async {
         // get data again
+        groceriesListBloc.add(GetGroceriesListRequest());
       },
       child: NotificationListener(
         onNotification: (ScrollNotification notification) {
           return _handleScrollNotification(notification);
         },
         child: ListView.separated(
-          itemCount: groceriesItems.length,
+          itemCount: listGroceries.length,
           separatorBuilder: (context, index) => const SizedBox(height: 4),
           itemBuilder: (context, index) {
-            GroceriesModel data = groceriesItems[index];
+            GroceriesModel data = listGroceries[index];
 
             return Container(
               margin: const EdgeInsets.fromLTRB(16, 16, 16, 0),
@@ -225,10 +231,10 @@ class _HomePageState extends State<HomePage>
                 borderRadius: BorderRadius.circular(12),
               ),
               child: GroceriesItem(
-                imageUrl: data.imageUrl,
-                title: data.title,
-                desc: data.desc,
-                price: data.price,
+                imageUrl: data.image ?? '',
+                productName: data.name ?? '',
+                productDesc: data.description ?? '',
+                price: data.price.toString(),
                 onTap: () {
                   Logger.print('go to detail');
                 },

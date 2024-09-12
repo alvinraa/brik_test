@@ -5,8 +5,8 @@ import 'package:google_fonts/google_fonts.dart';
 class GroceriesItem extends StatelessWidget {
   final void Function()? onTap;
   final String imageUrl;
-  final String title;
-  final String desc;
+  final String productName;
+  final String productDesc;
   final String price;
   final bool isLoadmore;
 
@@ -14,8 +14,8 @@ class GroceriesItem extends StatelessWidget {
     super.key,
     this.onTap,
     required this.imageUrl,
-    required this.title,
-    required this.desc,
+    required this.productName,
+    required this.productDesc,
     required this.price,
     this.isLoadmore = false,
   });
@@ -68,7 +68,7 @@ class GroceriesItem extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                title,
+                productName,
                 style: GoogleFonts.lato(
                   textStyle: textTheme.labelLarge?.copyWith(
                     color: colorScheme.secondary,
@@ -78,16 +78,15 @@ class GroceriesItem extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 4),
-              Text(
-                desc,
-                style: GoogleFonts.lato(
-                  textStyle: textTheme.labelLarge?.copyWith(
-                    // color: colorScheme.secondary,
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
+              // Text(
+              //   productDesc,
+              //   style: GoogleFonts.lato(
+              //     textStyle: textTheme.labelLarge?.copyWith(
+              //       // color: colorScheme.secondary,
+              //       fontSize: 16,
+              //     ),
+              //   ),
+              // ),
               const SizedBox(height: 20),
               Row(
                 children: [
@@ -97,7 +96,6 @@ class GroceriesItem extends StatelessWidget {
                       textStyle: textTheme.labelLarge?.copyWith(
                         // color: colorScheme.secondary,
                         fontSize: 18,
-                        fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
@@ -105,9 +103,8 @@ class GroceriesItem extends StatelessWidget {
                     price,
                     style: GoogleFonts.lato(
                       textStyle: textTheme.labelLarge?.copyWith(
-                        color: colorScheme.secondary,
+                        // color: colorScheme.secondary,
                         fontSize: 18,
-                        fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
