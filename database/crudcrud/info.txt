@@ -1,0 +1,64 @@
+url : https://crudcrud.com/api/38e6f0e3483d4c48a0e812eaa832cea2
+
+note : categoryId:categoryName -> 1:"food", 2:"drink"
+
+create table: 
+https://crudcrud.com/api/38e6f0e3483d4c48a0e812eaa832cea2/klontong
+ 
+with body -> raw : 
+{
+    "categoryId": 1,
+    "categoryName": "food",
+    "name": "Indomie Goreng",
+    "description": "Mi instan goreng favorit, cocok untuk sarapan atau makan malam.",
+    "stock": 10,
+    "price": 3500,
+    "image": "https://ik.imagekit.io/dcjlghyytp1/dd10d08e2ed3232ca404299ab62dd2ed?tr=f-auto,w-360"
+  }
+
+get list data:
+https://crudcrud.com/api/38e6f0e3483d4c48a0e812eaa832cea2/klontong
+
+the response:
+[
+    {
+        "_id": "66e2c94ffe837603e816bc64",
+        "categoryId": 1,
+        "categoryName": "food",
+        "name": "Indomie Goreng",
+        "description": "Mi instan goreng favorit, cocok untuk sarapan atau makan malam.",
+        "stock": 10,
+        "price": 3500,
+        "image": "https://ik.imagekit.io/dcjlghyytp1/dd10d08e2ed3232ca404299ab62dd2ed?tr=f-auto,w-360"
+    }
+]
+
+get data detail:
+https://crudcrud.com/api/38e6f0e3483d4c48a0e812eaa832cea2/klontong/{{_id}}
+
+the response: 
+{
+    "_id": "66e2c94ffe837603e816bc64",
+    "categoryId": 1,
+    "categoryName": "food",
+    "name": "Indomie Goreng",
+    "description": "Mi instan goreng favorit, cocok untuk sarapan atau makan malam.",
+    "stock": 10,
+    "price": 3500,
+    "image": "https://ik.imagekit.io/dcjlghyytp1/dd10d08e2ed3232ca404299ab62dd2ed?tr=f-auto,w-360"
+}
+
+edit data:
+https://crudcrud.com/api/38e6f0e3483d4c48a0e812eaa832cea2/klontong/{{id}}
+
+with body -> raw : 
+{
+    "categoryId": 1,
+    "categoryName": "food",
+    "name": "Indomie Goreng",
+    "description": "Mi instan goreng favorit, cocok untuk sarapan atau makan malam.",
+    "stock": 10,
+    "price": 3500,
+    "image": "https://ik.imagekit.io/dcjlghyytp1/dd10d08e2ed3232ca404299ab62dd2ed?tr=f-auto,w-360"
+  }
+

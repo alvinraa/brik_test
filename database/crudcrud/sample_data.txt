@@ -1,0 +1,92 @@
+[
+  {
+    "categoryId": 1,
+    "categoryName": "food",
+    "name": "Indomie Goreng",
+    "description": "Mi instan goreng favorit, cocok untuk sarapan atau makan malam.",
+    "stock": 10,
+    "price": 3500,
+    "image": "https://ik.imagekit.io/dcjlghyytp1/dd10d08e2ed3232ca404299ab62dd2ed?tr=f-auto,w-360"
+  },
+  {
+    "categoryId": 2,
+    "categoryName": "drink",
+    "name": "Teh Botol Sosro",
+    "description": "Teh manis siap minum, segar dan menyegarkan di segala suasana.",
+    "stock": 20,
+    "price": 5000,
+    "image": "https://jumbo.co.id/wp-content/uploads/2021/05/sosro.jpg"
+  },
+  {
+    "categoryId": 1,
+    "categoryName": "food",
+    "name": "Chitato Rasa Sapi Panggang",
+    "description": "Keripik kentang renyah dengan rasa sapi panggang yang gurih.",
+    "stock": 15,
+    "price": 8500,
+    "image": "https://images.tokopedia.net/img/cache/700/product-1/2020/6/17/626344/626344_28e51483-1931-4e7e-9242-00e50084241c_1024_1024.jpg"
+  },
+  {
+    "categoryId": 2,
+    "categoryName": "drink",
+    "name": "Aqua 600ml",
+    "description": "Air mineral berkualitas untuk menemani keseharianmu.",
+    "stock": 30,
+    "price": 4000,
+    "image": "https://images.tokopedia.net/img/cache/500-square/product-1/2020/7/1/1737220/1737220_36aae2d9-c0d4-42e9-8c3b-4986a12e7c09_554_554.jpg"
+  },
+  {
+    "categoryId": 1,
+    "categoryName": "food",
+    "name": "Taro Net Seaweed",
+    "description": "Snack gurih dari rumput laut yang renyah dan enak.",
+    "stock": 25,
+    "price": 7500,
+    "image": "https://images.tokopedia.net/img/cache/700/hDjmkQ/2023/1/4/ca6049a3-8737-411b-9624-709313ecc6dc.jpg"
+  },
+  {
+    "categoryId": 2,
+    "categoryName": "drink",
+    "name": "Fanta Strawberry",
+    "description": "Minuman bersoda dengan rasa stroberi yang menyegarkan.",
+    "stock": 18,
+    "price": 6000,
+    "image": "https://images.tokopedia.net/img/cache/700/hDjmkQ/2023/11/30/151ed3ed-21d2-40fb-8448-66207120bfb8.jpg"
+  },
+  {
+    "categoryId": 1,
+    "categoryName": "food",
+    "name": "SilverQueen Chunky Bar",
+    "description": "Cokelat lezat dengan kacang mede renyah, cocok untuk camilan.",
+    "stock": 12,
+    "price": 18000,
+    "image": "https://images.tokopedia.net/img/cache/700/VqbcmM/2021/8/22/48e22c34-6d1e-4272-bb97-f18b48fa38da.jpg"
+  },
+  {
+    "categoryId": 2,
+    "categoryName": "drink",
+    "name": "Coca-Cola Original",
+    "description": "Minuman bersoda klasik yang selalu cocok di segala suasana.",
+    "stock": 22,
+    "price": 6500,
+    "image": "https://images.tokopedia.net/img/cache/700/VqbcmM/2024/6/19/81c0c49b-dac4-4f53-be9f-e12afe5984f5.jpg"
+  },
+  {
+    "categoryId": 1,
+    "categoryName": "food",
+    "name": "Beng-Beng Share It",
+    "description": "Wafer renyah dilapisi cokelat dan karamel, sempurna untuk berbagi.",
+    "stock": 16,
+    "price": 9000,
+    "image": "https://ik.imagekit.io/dcjlghyytp1/e84856c8cbfff727467e6cf3b5082cc6?tr=f-auto,w-360"
+  },
+  {
+    "categoryId": 2,
+    "categoryName": "drink",
+    "name": "Pocari Sweat",
+    "description": "Minuman ion yang menggantikan cairan tubuh dengan cepat.",
+    "stock": 28,
+    "price": 8000,
+    "image": "https://d2qjkwm11akmwu.cloudfront.net/products/163812_27-5-2022_17-25-30-1665803703.webp"
+  }
+]
