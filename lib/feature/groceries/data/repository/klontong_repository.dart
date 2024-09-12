@@ -27,7 +27,7 @@ class KlontongRepository {
   }
 
   // Get Detail Groceries
-  Future<GroceriesModel> getKlontongDetail(String id) async {
+  Future<GroceriesModel> getKlontongDetail({required String id}) async {
     Logger.print('--- KlontongRepository @getKlontongDetail : ---');
     try {
       var endPoint = '${Endpoint.klontong}/$id';
@@ -74,7 +74,7 @@ class KlontongRepository {
   }
 
   // Get Detail Groceries
-  Future deleteKlontong(String id) async {
+  Future deleteKlontong({required String id}) async {
     Logger.print('--- KlontongRepository @deleteKlontong : ---');
     try {
       var endPoint = '${Endpoint.klontong}/$id';
