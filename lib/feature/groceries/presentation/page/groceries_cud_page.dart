@@ -64,7 +64,7 @@ class _GroceriesCUDPageState extends State<GroceriesCUDPage> {
   }
 
   Widget submitButton() {
-    var textTheme = Theme.of(context).textTheme;
+    // var textTheme = Theme.of(context).textTheme;
     var colorScheme = Theme.of(context).colorScheme;
 
     return Container(
