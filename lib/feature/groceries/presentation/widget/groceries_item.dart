@@ -1,4 +1,4 @@
-import 'package:brik_test/core/widget/button/shimmer/default_shimmer.dart';
+import 'package:brik_test/core/widget/shimmer/default_shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
