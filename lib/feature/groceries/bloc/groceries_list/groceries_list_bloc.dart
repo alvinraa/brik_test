@@ -8,7 +8,7 @@ part 'groceries_list_event.dart';
 part 'groceries_list_state.dart';
 
 class GroceriesListBloc extends Bloc<GroceriesListEvent, GroceriesListState> {
-  GroceriesListBloc() : super(GetGroceriesListLoading()) {
+  GroceriesListBloc() : super(GroceriesListLoading()) {
     on<GetGroceriesListRequest>((event, emit) async {
       await getGroceriesList(event, emit);
     });
@@ -22,15 +22,15 @@ class GroceriesListBloc extends Bloc<GroceriesListEvent, GroceriesListState> {
     Emitter<GroceriesListState> emit,
   ) async {
     try {
-      emit(GetGroceriesListLoading());
+      emit(GroceriesListLoading());
 
       List<GroceriesModel> response = await repository.getListGroceries();
       listGroceries = response;
 
-      emit(GetGroceriesListLoaded());
+      emit(GroceriesListLoaded());
     } catch (e) {
       Logger.print('err in bloc: ${e.toString()}');
-      emit(GetGroceriesListError(errorMessage: e.toString()));
+      emit(GroceriesListError(errorMessage: e.toString()));
     }
   }
 }

@@ -5,15 +5,15 @@ sealed class GroceriesListState {}
 
 final class GroceriesListInitial extends GroceriesListState {}
 
-class GetGroceriesListLoading extends GroceriesListState {}
+class GroceriesListLoading extends GroceriesListState {}
 
-class GetGroceriesListLoadMoreLoading extends GroceriesListState {}
+class GroceriesListLoadMoreLoading extends GroceriesListState {}
 
-class GetGroceriesListLoaded extends GroceriesListState {
-  GetGroceriesListLoaded();
+class GroceriesListLoaded extends GroceriesListState {
+  GroceriesListLoaded();
 }
 
-class GetGroceriesListError extends GroceriesListState {
+class GroceriesListError extends GroceriesListState {
   final String? errorMessage;
-  GetGroceriesListError({this.errorMessage});
+  GroceriesListError({this.errorMessage});
 }

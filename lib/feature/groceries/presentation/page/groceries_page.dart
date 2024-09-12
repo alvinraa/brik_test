@@ -182,13 +182,13 @@ class _GroceriesPageState extends State<GroceriesPage>
     return BlocBuilder(
       bloc: groceriesListBloc,
       builder: (context, state) {
-        if (state is GetGroceriesListLoading) {
+        if (state is GroceriesListLoading) {
           return const Center(
             child: CircularProgressIndicator(),
           );
         }
 
-        if (state is GetGroceriesListError) {
+        if (state is GroceriesListError) {
           Center(child: Text(state.errorMessage ?? "-"));
         }
 
