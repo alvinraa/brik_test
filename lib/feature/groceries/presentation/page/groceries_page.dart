@@ -1,7 +1,7 @@
 import 'package:brik_test/core/common/logger.dart';
-import 'package:brik_test/feature/home/bloc/groceries_list/groceries_list_bloc.dart';
-import 'package:brik_test/feature/home/data/model/klontong_response.dart';
-import 'package:brik_test/feature/home/presentation/widget/groceries_item.dart';
+import 'package:brik_test/feature/groceries/bloc/groceries_list/groceries_list_bloc.dart';
+import 'package:brik_test/feature/groceries/data/model/klontong_response.dart';
+import 'package:brik_test/feature/groceries/presentation/widget/groceries_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

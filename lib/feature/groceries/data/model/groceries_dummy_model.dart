@@ -1,4 +1,4 @@
-import 'package:brik_test/feature/home/data/model/klontong_response.dart';
+import 'package:brik_test/feature/groceries/data/model/klontong_response.dart';
 
 List<GroceriesModel> dummyGroceriesItems = [
   GroceriesModel(

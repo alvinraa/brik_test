@@ -1,7 +1,7 @@
 import 'package:brik_test/core/client/client.dart';
 import 'package:brik_test/core/common/endpoint.dart';
 import 'package:brik_test/core/common/logger.dart';
-import 'package:brik_test/feature/home/data/model/klontong_response.dart';
+import 'package:brik_test/feature/groceries/data/model/klontong_response.dart';
 import 'package:dio/dio.dart';
 
 class KlontongRepository {

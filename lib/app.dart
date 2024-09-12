@@ -2,7 +2,7 @@ import 'package:brik_test/core/common/helper.dart';
 import 'package:brik_test/core/common/navigation.dart';
 import 'package:brik_test/core/common/routes.dart';
 import 'package:brik_test/core/theme/style.dart';
-import 'package:brik_test/feature/home/bloc/groceries_list/groceries_list_bloc.dart';
+import 'package:brik_test/feature/groceries/bloc/groceries_list/groceries_list_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
