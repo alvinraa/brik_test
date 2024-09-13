@@ -106,7 +106,7 @@ class _GroceriesDetailPageState extends State<GroceriesDetailPage> {
             message: 'success delete data',
           );
 
-          // Navigator.pop(context);
+          Navigator.pop(context);
         }
         if (state is GroceriesDeleteError) {
           Toast.showToast(
