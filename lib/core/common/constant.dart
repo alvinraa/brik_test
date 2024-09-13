@@ -2,5 +2,5 @@ class Constant {
   static const baseUrl = "https://crudcrud.com/api/$uidCrudCrud";
 
   // only 24 hour and 100 request
-  static const uidCrudCrud = '98af5e73e40640cd9717bc133df841dd/';
+  static const uidCrudCrud = '93193683c20a4d8ca2f9371619c018e0/';
 }

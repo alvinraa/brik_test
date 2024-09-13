@@ -100,29 +100,26 @@ class _GroceriesDetailPageState extends State<GroceriesDetailPage> {
       bloc: groceriesDeleteBloc,
       listener: (context, state) {
         if (state is GroceriesDeleteSuccess) {
-          // Colors.black.withOpacity(0.9)
-          // Toast.showToast(
-          //   iconColor: Colors.green,
-          //   iconData: Icons.check_circle_outline_outlined,
-          //   message: 'success delete data',
-          // );
-
-          // the toast not work, still on progress
           Fluttertoast.showToast(
             msg: 'success delete data',
-            backgroundColor: Colors.green,
+            backgroundColor: Colors.black.withOpacity(0.8),
+            textColor: Colors.white,
+            fontSize: 14,
+            toastLength: Toast.LENGTH_LONG,
+            gravity: ToastGravity.SNACKBAR,
+          );
+          // back to list
+          Navigator.pop(context);
+        }
+        if (state is GroceriesDeleteError) {
+          Fluttertoast.showToast(
+            msg: '${state.errorMessage}',
+            backgroundColor: Colors.green.withOpacity(0.8),
             textColor: Colors.white,
             fontSize: 14,
             toastLength: Toast.LENGTH_LONG,
             gravity: ToastGravity.TOP,
           );
-        }
-        if (state is GroceriesDeleteError) {
-          // Toast.showToast(
-          //   iconColor: Theme.of(context).colorScheme.primary,
-          //   iconData: Icons.info_outlined,
-          //   message: state.errorMessage,
-          // );
         }
       },
       builder: (context, state) {
@@ -145,7 +142,6 @@ class _GroceriesDetailPageState extends State<GroceriesDetailPage> {
                         deleteOnTap: () {
                           groceriesDeleteBloc.add(GroceriesDetailDeleteRequest(
                               id: groceriesId ?? ''));
-                          Navigator.pop(context);
                           Navigator.pop(context);
                         },
                         cancelOnTap: () {

@@ -11,6 +11,7 @@ import 'package:brik_test/feature/groceries/data/model/klontong_response.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class GroceriesCUDPage extends StatefulWidget {
@@ -331,20 +332,26 @@ class _GroceriesCUDPageState extends State<GroceriesCUDPage> {
       bloc: groceriesAddBloc,
       listener: (context, state) {
         if (state is GroceriesAddSuccess) {
-          // Toast.showToast(
-          //   iconColor: Colors.green,
-          //   iconData: Icons.check_circle_outline_outlined,
-          //   message: 'success add data',
-          // );
+          Fluttertoast.showToast(
+            msg: 'success to add data',
+            backgroundColor: Colors.black.withOpacity(0.8),
+            textColor: Colors.white,
+            fontSize: 14,
+            toastLength: Toast.LENGTH_LONG,
+            gravity: ToastGravity.SNACKBAR,
+          );
           Logger.print('success add data');
           Navigator.pop(context);
         }
         if (state is GroceriesAddError) {
-          // Toast.showToast(
-          //   iconColor: colorScheme.primary,
-          //   iconData: Icons.info_outlined,
-          //   message: state.errorMessage,
-          // );
+          Fluttertoast.showToast(
+            msg: 'failed to add data',
+            backgroundColor: Colors.black.withOpacity(0.8),
+            textColor: Colors.white,
+            fontSize: 14,
+            toastLength: Toast.LENGTH_LONG,
+            gravity: ToastGravity.SNACKBAR,
+          );
           Logger.print('failed');
         }
       },
@@ -360,10 +367,14 @@ class _GroceriesCUDPageState extends State<GroceriesCUDPage> {
                 onPressed: () {
                   // validate first
                   if (!_formKey.currentState!.validate()) {
-                    // Toast.showToast(
-                    //     iconColor: colorScheme.primary,
-                    //     iconData: Icons.info_outlined,
-                    //     message: 'please_fill_required');
+                    Fluttertoast.showToast(
+                      msg: 'please fill required',
+                      backgroundColor: Colors.black.withOpacity(0.8),
+                      textColor: Colors.white,
+                      fontSize: 14,
+                      toastLength: Toast.LENGTH_LONG,
+                      gravity: ToastGravity.SNACKBAR,
+                    );
                     return;
                   }
 
@@ -397,20 +408,26 @@ class _GroceriesCUDPageState extends State<GroceriesCUDPage> {
       bloc: groceriesUpdateBloc,
       listener: (context, state) {
         if (state is GroceriesUpdateSuccess) {
-          // Toast.showToast(
-          //   iconColor: Colors.green,
-          //   iconData: Icons.check_circle_outline_outlined,
-          //   message: 'success update data',
-          // );
+          Fluttertoast.showToast(
+            msg: 'success update data',
+            backgroundColor: Colors.black.withOpacity(0.8),
+            textColor: Colors.white,
+            fontSize: 14,
+            toastLength: Toast.LENGTH_LONG,
+            gravity: ToastGravity.SNACKBAR,
+          );
           Logger.print('success update data');
           Navigator.pop(context);
         }
         if (state is GroceriesUpdateError) {
-          // Toast.showToast(
-          //   iconColor: Theme.of(context).colorScheme.primary,
-          //   iconData: Icons.info_outlined,
-          //   message: state.errorMessage,
-          // );
+          Fluttertoast.showToast(
+            msg: 'failed update data',
+            backgroundColor: Colors.black.withOpacity(0.8),
+            textColor: Colors.white,
+            fontSize: 14,
+            toastLength: Toast.LENGTH_LONG,
+            gravity: ToastGravity.SNACKBAR,
+          );
           Logger.print('failed');
         }
       },
@@ -426,10 +443,14 @@ class _GroceriesCUDPageState extends State<GroceriesCUDPage> {
                 onPressed: () {
                   // validate first
                   if (!_formKey.currentState!.validate()) {
-                    // Toast.showToast(
-                    //     iconColor: colorScheme.primary,
-                    //     iconData: Icons.info_outlined,
-                    //     message: 'please fill required');
+                    Fluttertoast.showToast(
+                      msg: 'please fill required',
+                      backgroundColor: Colors.black.withOpacity(0.8),
+                      textColor: Colors.white,
+                      fontSize: 14,
+                      toastLength: Toast.LENGTH_LONG,
+                      gravity: ToastGravity.SNACKBAR,
+                    );
                     return;
                   }
 
