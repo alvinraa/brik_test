@@ -9,7 +9,7 @@ final class GroceriesDeleteNoLoading extends GroceriesDeleteState {}
 
 final class GroceriesDeleteLoading extends GroceriesDeleteState {}
 
-final class GroceriesDeleteLoaded extends GroceriesDeleteState {}
+final class GroceriesDeleteSuccess extends GroceriesDeleteState {}
 
 final class GroceriesDeleteError extends GroceriesDeleteState {
   final String? errorMessage;

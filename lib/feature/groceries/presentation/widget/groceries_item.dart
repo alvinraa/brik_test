@@ -8,6 +8,7 @@ class GroceriesItem extends StatelessWidget {
   final String productName;
   final String productDesc;
   final String price;
+  final String stock;
   final bool isLoadmore;
 
   const GroceriesItem({
@@ -17,6 +18,7 @@ class GroceriesItem extends StatelessWidget {
     required this.productName,
     required this.productDesc,
     required this.price,
+    required this.stock,
     this.isLoadmore = false,
   });
 
@@ -27,16 +29,17 @@ class GroceriesItem extends StatelessWidget {
 
     return InkWell(
       onTap: onTap,
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           // image
           ClipRRect(
             borderRadius: BorderRadius.circular(8),
             child: Image.network(
               imageUrl,
-              width: 120,
-              height: 140,
+              width: 80,
+              height: 80,
               fit: BoxFit.cover,
               alignment: Alignment.center,
               loadingBuilder: (context, child, loadingProgress) {
@@ -44,16 +47,16 @@ class GroceriesItem extends StatelessWidget {
                   return child;
                 } else {
                   return const DefaultShimmer(
-                    width: 120,
-                    height: 140,
+                    width: 80,
+                    height: 80,
                   );
                 }
               },
               errorBuilder: (context, error, stackTrace) {
                 return Image.network(
-                  'https://placehold.co/140x120.png',
-                  width: 120,
-                  height: 140,
+                  'https://placehold.co/80x80.png',
+                  width: 80,
+                  height: 80,
                   fit: BoxFit.cover,
                   alignment: Alignment.center,
                 );
@@ -61,57 +64,41 @@ class GroceriesItem extends StatelessWidget {
             ),
           ),
           // other info
-          const SizedBox(width: 20),
-          Expanded(
-              child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                productName,
-                style: GoogleFonts.lato(
-                  textStyle: textTheme.labelLarge?.copyWith(
-                    color: colorScheme.secondary,
-                    fontSize: 22,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
+          const SizedBox(height: 8),
+          Text(
+            productName,
+            maxLines: 2,
+            textAlign: TextAlign.center,
+            style: GoogleFonts.lato(
+              textStyle: textTheme.labelLarge?.copyWith(
+                fontSize: 14,
+                fontWeight: FontWeight.bold,
               ),
-              const SizedBox(height: 4),
-              // Text(
-              //   productDesc,
-              //   style: GoogleFonts.lato(
-              //     textStyle: textTheme.labelLarge?.copyWith(
-              //       // color: colorScheme.secondary,
-              //       fontSize: 16,
-              //     ),
-              //   ),
-              // ),
-              const SizedBox(height: 20),
-              Row(
-                children: [
-                  Text(
-                    'Rp. ',
-                    style: GoogleFonts.lato(
-                      textStyle: textTheme.labelLarge?.copyWith(
-                        // color: colorScheme.secondary,
-                        fontSize: 18,
-                      ),
-                    ),
-                  ),
-                  Text(
-                    price,
-                    style: GoogleFonts.lato(
-                      textStyle: textTheme.labelLarge?.copyWith(
-                        // color: colorScheme.secondary,
-                        fontSize: 18,
-                      ),
-                    ),
-                  ),
-                ],
+            ),
+          ),
+          const Spacer(),
+          Text(
+            'Stock: $stock',
+            maxLines: 1,
+            textAlign: TextAlign.center,
+            style: GoogleFonts.lato(
+              textStyle: textTheme.labelLarge?.copyWith(
+                fontSize: 12,
               ),
-            ],
-          )),
+            ),
+          ),
+          const SizedBox(height: 4),
+          Text(
+            'Rp. $price',
+            maxLines: 1,
+            style: GoogleFonts.lato(
+              textStyle: textTheme.labelLarge?.copyWith(
+                color: colorScheme.secondary,
+                fontSize: 14,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
         ],
       ),
     );

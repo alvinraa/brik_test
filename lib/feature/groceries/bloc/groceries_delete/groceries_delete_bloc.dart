@@ -25,14 +25,14 @@ class GroceriesDeleteBloc
 
       // if id null
       if (event.id.isEmpty || event.id == '') {
-        emit(GroceriesDeleteLoaded());
+        emit(GroceriesDeleteSuccess());
         return;
       }
 
       await repository.deleteKlontong(id: event.id);
       // var response = await repository.deleteKlontong(id: event.id);
 
-      emit(GroceriesDeleteLoaded());
+      emit(GroceriesDeleteSuccess());
     } catch (e) {
       Logger.print('err in bloc: ${e.toString()}');
       emit(GroceriesDeleteError(errorMessage: e.toString()));

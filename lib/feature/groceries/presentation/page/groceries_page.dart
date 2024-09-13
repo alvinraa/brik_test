@@ -1,4 +1,7 @@
 import 'package:brik_test/core/common/logger.dart';
+import 'package:brik_test/core/common/navigation.dart';
+import 'package:brik_test/core/common/routes.dart';
+import 'package:brik_test/core/widget/button/default_button.dart';
 import 'package:brik_test/feature/groceries/bloc/groceries_list/groceries_list_bloc.dart';
 import 'package:brik_test/feature/groceries/data/model/klontong_response.dart';
 import 'package:brik_test/feature/groceries/presentation/widget/groceries_item.dart';
@@ -34,7 +37,9 @@ class _GroceriesPageState extends State<GroceriesPage>
   void initState() {
     // init bloc
     groceriesListBloc = GroceriesListBloc();
-    groceriesListBloc.add(GetGroceriesListRequest());
+    setState(() {
+      groceriesListBloc.add(GetGroceriesListRequest());
+    });
 
     // handle tab controller
     _tabController = TabController(length: 3, vsync: this);
@@ -174,6 +179,9 @@ class _GroceriesPageState extends State<GroceriesPage>
             children: klobAndCoMenu,
           ),
         ),
+        // space for btm
+        const SizedBox(height: 24),
+        submitButton(),
       ],
     );
   }
@@ -189,7 +197,10 @@ class _GroceriesPageState extends State<GroceriesPage>
         }
 
         if (state is GroceriesListError) {
-          Center(child: Text(state.errorMessage ?? "-"));
+          Padding(
+            padding: const EdgeInsets.all(16),
+            child: Center(child: Text(state.errorMessage ?? "-")),
+          );
         }
 
         return buildListAll(context, state);
@@ -207,40 +218,99 @@ class _GroceriesPageState extends State<GroceriesPage>
     return RefreshIndicator(
       onRefresh: () async {
         // get data again
-        groceriesListBloc.add(GetGroceriesListRequest());
+        // groceriesListBloc.add(GetGroceriesListRequest());
       },
       child: NotificationListener(
         onNotification: (ScrollNotification notification) {
-          return _handleScrollNotification(notification);
+          // return _handleScrollNotification(notification);
+          return false;
         },
-        child: ListView.separated(
-          itemCount: listGroceries.length,
-          separatorBuilder: (context, index) => const SizedBox(height: 4),
-          itemBuilder: (context, index) {
-            GroceriesModel data = listGroceries[index];
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 24),
+          child: GridView.builder(
+            itemCount: listGroceries.length,
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              crossAxisSpacing: 24,
+              mainAxisSpacing: 24,
+              // this height should not be fixed
+              mainAxisExtent: 220,
+            ),
+            itemBuilder: (context, index) {
+              GroceriesModel data = listGroceries[index];
 
-            return Container(
-              margin: const EdgeInsets.fromLTRB(16, 16, 16, 0),
-              padding: const EdgeInsets.symmetric(
-                horizontal: 16,
-                vertical: 24,
-              ),
-              decoration: BoxDecoration(
-                color: colorScheme.onPrimary,
-                border: Border.all(color: Colors.grey.shade300),
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: GroceriesItem(
-                imageUrl: data.image ?? '',
-                productName: data.name ?? '',
-                productDesc: data.description ?? '',
-                price: data.price.toString(),
-                onTap: () {
-                  Logger.print('go to detail');
+              return Container(
+                // margin: const EdgeInsets.fromLTRB(24, 0, 24, 0),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 16,
+                  vertical: 16,
+                ),
+                decoration: BoxDecoration(
+                  color: colorScheme.onPrimary,
+                  border: Border.all(color: Colors.grey.shade300),
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: GroceriesItem(
+                  imageUrl: data.image ?? '',
+                  productName: data.name ?? '',
+                  productDesc: data.description ?? '',
+                  price: data.price.toString(),
+                  stock: data.stock.toString(),
+                  onTap: () {
+                    String id = data.id ?? '';
+                    Logger.print('id : $id');
+
+                    navigatorKey.currentState
+                        ?.pushNamed(
+                      Routes.groceriesDetailPage,
+                      arguments: id,
+                    )
+                        .then(
+                      (value) {
+                        setState(() {
+                          groceriesListBloc.add(GetGroceriesListRequest());
+                        });
+                      },
+                    );
+                  },
+                ),
+              );
+            },
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget submitButton() {
+    // var textTheme = Theme.of(context).textTheme;
+    var colorScheme = Theme.of(context).colorScheme;
+
+    return Container(
+      color: colorScheme.onPrimary,
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+      child: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8),
+          child: DefaultButton(
+            margin: const EdgeInsets.symmetric(horizontal: 16),
+            onPressed: () {
+              // go to add input page
+              navigatorKey.currentState
+                  ?.pushNamed(
+                Routes.groceriesCUDPage,
+              )
+                  .then(
+                (value) {
+                  setState(() {
+                    groceriesListBloc.add(GetGroceriesListRequest());
+                  });
                 },
-              ),
-            );
-          },
+              );
+            },
+            label: 'Add New Item',
+            height: 40,
+          ),
         ),
       ),
     );

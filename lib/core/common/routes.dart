@@ -6,11 +6,11 @@ import 'package:flutter/material.dart';
 
 class Routes {
   static const String testingPage = '/testing';
-  // static const String groceriesPage = '/';
-  static const String groceriesCUDPage = '/';
+  static const String groceriesPage = '/';
+  // static const String groceriesCUDPage = '/';
   // static const String groceriesDetailPage = '/';
-  static const String groceriesPage = '/groceries';
-  // static const String groceriesCUDPage = '/groceries-cud';
+  // static const String groceriesPage = '/groceries';
+  static const String groceriesCUDPage = '/groceries-cud';
   static const String groceriesDetailPage = '/groceries-detail';
 }
 
@@ -28,12 +28,16 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       );
     case Routes.groceriesDetailPage:
       return MaterialPageRoute(
-        builder: (BuildContext context) => const GroceriesDetailPage(),
+        builder: (BuildContext context) => GroceriesDetailPage(
+          data: settings.arguments,
+        ),
         settings: settings,
       );
     case Routes.groceriesCUDPage:
       return MaterialPageRoute(
-        builder: (BuildContext context) => const GroceriesCUDPage(),
+        builder: (BuildContext context) => GroceriesCUDPage(
+          data: settings.arguments,
+        ),
         settings: settings,
       );
     default:
