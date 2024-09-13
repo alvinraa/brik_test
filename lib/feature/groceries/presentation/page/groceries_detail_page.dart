@@ -106,7 +106,7 @@ class _GroceriesDetailPageState extends State<GroceriesDetailPage> {
             message: 'success delete data',
           );
 
-          Navigator.pop(context);
+          // Navigator.pop(context);
         }
         if (state is GroceriesDeleteError) {
           Toast.showToast(
@@ -380,9 +380,18 @@ class _GroceriesDetailPageState extends State<GroceriesDetailPage> {
             margin: const EdgeInsets.symmetric(horizontal: 8),
             onPressed: () {
               // go to add input page
-              navigatorKey.currentState?.pushNamed(
+              navigatorKey.currentState
+                  ?.pushNamed(
                 Routes.groceriesCUDPage,
                 arguments: groceriesModel,
+              )
+                  .then(
+                (value) {
+                  setState(() {
+                    groceriesDetailBloc
+                        .add(GetGroceriesDetailRequest(id: groceriesId ?? ''));
+                  });
+                },
               );
             },
             label: 'Edit',

@@ -1,4 +1,6 @@
 class Constant {
-  static const baseUrl = "https://crudcrud.com/api/$uniqueCrudCrudUid";
-  static const uniqueCrudCrudUid = '38e6f0e3483d4c48a0e812eaa832cea2/';
+  static const baseUrl = "https://crudcrud.com/api/$uidCrudCrud";
+
+  // only 24 hour and 100 request
+  static const uidCrudCrud = 'b4c207a74a014b1bb44d3376b7411b92/';
 }
