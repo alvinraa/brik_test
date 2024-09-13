@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../../common/helper.dart';
 
+// not work yet.
 class Toast {
   /// [iconColor] is icon color, change based on your warning,
   ///

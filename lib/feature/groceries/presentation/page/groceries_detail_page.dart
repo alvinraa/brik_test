@@ -3,12 +3,12 @@ import 'package:brik_test/core/common/routes.dart';
 import 'package:brik_test/core/widget/button/default_button.dart';
 import 'package:brik_test/core/widget/dialog/delete_dialog_content.dart';
 import 'package:brik_test/core/widget/shimmer/default_shimmer.dart';
-import 'package:brik_test/core/widget/toast/toast.dart';
 import 'package:brik_test/feature/groceries/bloc/groceries_delete/groceries_delete_bloc.dart';
 import 'package:brik_test/feature/groceries/bloc/groceries_detail/groceries_detail_bloc.dart';
 import 'package:brik_test/feature/groceries/data/model/klontong_response.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class GroceriesDetailPage extends StatefulWidget {
@@ -100,20 +100,29 @@ class _GroceriesDetailPageState extends State<GroceriesDetailPage> {
       bloc: groceriesDeleteBloc,
       listener: (context, state) {
         if (state is GroceriesDeleteSuccess) {
-          Toast.showToast(
-            iconColor: Colors.green,
-            iconData: Icons.check_circle_outline_outlined,
-            message: 'success delete data',
-          );
+          // Colors.black.withOpacity(0.9)
+          // Toast.showToast(
+          //   iconColor: Colors.green,
+          //   iconData: Icons.check_circle_outline_outlined,
+          //   message: 'success delete data',
+          // );
 
-          Navigator.pop(context);
+          // the toast not work, still on progress
+          Fluttertoast.showToast(
+            msg: 'success delete data',
+            backgroundColor: Colors.green,
+            textColor: Colors.white,
+            fontSize: 14,
+            toastLength: Toast.LENGTH_LONG,
+            gravity: ToastGravity.TOP,
+          );
         }
         if (state is GroceriesDeleteError) {
-          Toast.showToast(
-            iconColor: Theme.of(context).colorScheme.primary,
-            iconData: Icons.info_outlined,
-            message: state.errorMessage,
-          );
+          // Toast.showToast(
+          //   iconColor: Theme.of(context).colorScheme.primary,
+          //   iconData: Icons.info_outlined,
+          //   message: state.errorMessage,
+          // );
         }
       },
       builder: (context, state) {

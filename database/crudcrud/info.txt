@@ -1,4 +1,5 @@
-url : https://crudcrud.com/api/38e6f0e3483d4c48a0e812eaa832cea2
+url : https://crudcrud.com/api/uid
+uid latest = 98af5e73e40640cd9717bc133df841dd
 
 note : categoryId:categoryName -> 1:"food", 2:"drink"
 
