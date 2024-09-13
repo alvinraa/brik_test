@@ -376,10 +376,7 @@ class _GroceriesCUDPageState extends State<GroceriesCUDPage> {
                     payload.price = int.parse(_priceController.text);
                     payload.image = _imageUrlController.text;
 
-                    setState(() {
-                      groceriesAddBloc
-                          .add(GroceriesAddRequest(payload: payload));
-                    });
+                    groceriesAddBloc.add(GroceriesAddRequest(payload: payload));
                   }
                 },
                 showLoading: state is GroceriesAddLoading,
@@ -446,10 +443,8 @@ class _GroceriesCUDPageState extends State<GroceriesCUDPage> {
                     payload.image = _imageUrlController.text;
 
                     if (groceriesId != null) {
-                      setState(() {
-                        groceriesUpdateBloc.add(GroceriesUpdateRequest(
-                            id: groceriesId ?? '', payload: payload));
-                      });
+                      groceriesUpdateBloc.add(GroceriesUpdateRequest(
+                          id: groceriesId ?? '', payload: payload));
                     }
                   }
                 },

@@ -27,7 +27,7 @@ class _GroceriesPageState extends State<GroceriesPage>
   // tab Controller
   TabController? _tabController;
   int _selectedIndex = 0;
-  List<Widget> klobAndCoMenu = [
+  List<Widget> groceiesMenu = [
     Container(), // all
     Container(), // food
     Container(), // drink
@@ -103,7 +103,7 @@ class _GroceriesPageState extends State<GroceriesPage>
     var textTheme = Theme.of(context).textTheme;
     var colorScheme = Theme.of(context).colorScheme;
 
-    klobAndCoMenu = [all(), food(), drink()];
+    groceiesMenu = [all(), food(), drink()];
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -176,7 +176,7 @@ class _GroceriesPageState extends State<GroceriesPage>
         Expanded(
           child: TabBarView(
             controller: _tabController,
-            children: klobAndCoMenu,
+            children: groceiesMenu,
           ),
         ),
         // space for btm
@@ -269,9 +269,7 @@ class _GroceriesPageState extends State<GroceriesPage>
                     )
                         .then(
                       (value) {
-                        setState(() {
-                          groceriesListBloc.add(GetGroceriesListRequest());
-                        });
+                        groceriesListBloc.add(GetGroceriesListRequest());
                       },
                     );
                   },

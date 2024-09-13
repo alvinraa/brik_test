@@ -396,10 +396,8 @@ class _GroceriesDetailPageState extends State<GroceriesDetailPage> {
               )
                   .then(
                 (value) {
-                  setState(() {
-                    groceriesDetailBloc
-                        .add(GetGroceriesDetailRequest(id: groceriesId ?? ''));
-                  });
+                  groceriesDetailBloc
+                      .add(GetGroceriesDetailRequest(id: groceriesId ?? ''));
                 },
               );
             },
