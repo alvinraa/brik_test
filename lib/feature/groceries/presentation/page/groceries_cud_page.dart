@@ -4,7 +4,6 @@ import 'package:brik_test/core/widget/button/default_button.dart';
 import 'package:brik_test/core/widget/dropdown/default_dropdown_item.dart';
 import 'package:brik_test/core/widget/text_field/default_text_field.dart';
 import 'package:brik_test/core/widget/text_field/dropdown_text_field.dart';
-import 'package:brik_test/core/widget/toast/toast.dart';
 import 'package:brik_test/feature/groceries/bloc/groceries_add/groceries_add_bloc.dart';
 import 'package:brik_test/feature/groceries/bloc/groceries_update/groceries_update_bloc.dart';
 import 'package:brik_test/feature/groceries/data/model/groceries_payload.dart';
@@ -168,8 +167,8 @@ class _GroceriesCUDPageState extends State<GroceriesCUDPage> {
             ),
             const SizedBox(height: 24),
             DropdownTextField(
-              label: 'category',
-              hintText: 'choose_category',
+              label: 'Category',
+              hintText: 'Choose category',
               globalKey: _categoryKey,
               controller: _categoryNameController,
               hasAsterixOnLabel: true,
@@ -200,15 +199,15 @@ class _GroceriesCUDPageState extends State<GroceriesCUDPage> {
               validator: (val) {
                 if (val == null || val.isEmpty) {
                   isCategoryError = true;
-                  return 'field_required';
+                  return 'field required';
                 }
                 return null;
               },
             ),
             const SizedBox(height: 16),
             DefaultTextField(
-              label: 'name',
-              hintText: 'input_name',
+              label: 'Name',
+              hintText: 'type here',
               controller: _nameController,
               hasAsterixOnLabel: true,
               maxLines: 1,
@@ -224,15 +223,15 @@ class _GroceriesCUDPageState extends State<GroceriesCUDPage> {
               validator: (val) {
                 if (val == null || val.isEmpty) {
                   isNameError = true;
-                  return 'field_required';
+                  return 'field required';
                 }
                 return null;
               },
             ),
             const SizedBox(height: 12),
             DefaultTextField(
-              label: 'description',
-              hintText: 'input_description',
+              label: 'Description',
+              hintText: 'type here',
               controller: _descriptionController,
               hasAsterixOnLabel: true,
               maxLines: 1,
@@ -248,15 +247,15 @@ class _GroceriesCUDPageState extends State<GroceriesCUDPage> {
               validator: (val) {
                 if (val == null || val.isEmpty) {
                   isDescriptionError = true;
-                  return 'field_required';
+                  return 'field required';
                 }
                 return null;
               },
             ),
             const SizedBox(height: 12),
             DefaultTextField(
-              label: 'stock',
-              hintText: 'input_stock',
+              label: 'Stock',
+              hintText: 'type here',
               controller: _stockController,
               hasAsterixOnLabel: true,
               textInputType: TextInputType.number,
@@ -275,15 +274,15 @@ class _GroceriesCUDPageState extends State<GroceriesCUDPage> {
               validator: (val) {
                 if (val == null || val.isEmpty) {
                   isStockError = true;
-                  return 'field_required';
+                  return 'field required';
                 }
                 return null;
               },
             ),
             const SizedBox(height: 12),
             DefaultTextField(
-              label: 'price',
-              hintText: 'input_price',
+              label: 'Price',
+              hintText: 'type here',
               controller: _priceController,
               hasAsterixOnLabel: true,
               textInputType: TextInputType.number,
@@ -302,15 +301,15 @@ class _GroceriesCUDPageState extends State<GroceriesCUDPage> {
               validator: (val) {
                 if (val == null || val.isEmpty) {
                   isPriceError = true;
-                  return 'field_required';
+                  return 'field required';
                 }
                 return null;
               },
             ),
             const SizedBox(height: 12),
             DefaultTextField(
-              label: 'image_url',
-              hintText: 'input_image_url',
+              label: 'Image Url',
+              hintText: 'type here',
               controller: _imageUrlController,
               maxLines: 1,
               inputFormatters: [
@@ -337,8 +336,7 @@ class _GroceriesCUDPageState extends State<GroceriesCUDPage> {
           //   iconData: Icons.check_circle_outline_outlined,
           //   message: 'success add data',
           // );
-          Logger.print('success');
-
+          Logger.print('success add data');
           Navigator.pop(context);
         }
         if (state is GroceriesAddError) {
@@ -362,10 +360,10 @@ class _GroceriesCUDPageState extends State<GroceriesCUDPage> {
                 onPressed: () {
                   // validate first
                   if (!_formKey.currentState!.validate()) {
-                    Toast.showToast(
-                        iconColor: colorScheme.primary,
-                        iconData: Icons.info_outlined,
-                        message: 'please_fill_required');
+                    // Toast.showToast(
+                    //     iconColor: colorScheme.primary,
+                    //     iconData: Icons.info_outlined,
+                    //     message: 'please_fill_required');
                     return;
                   }
 
@@ -378,7 +376,6 @@ class _GroceriesCUDPageState extends State<GroceriesCUDPage> {
                     payload.price = int.parse(_priceController.text);
                     payload.image = _imageUrlController.text;
 
-                    // send request
                     setState(() {
                       groceriesAddBloc
                           .add(GroceriesAddRequest(payload: payload));
@@ -408,9 +405,7 @@ class _GroceriesCUDPageState extends State<GroceriesCUDPage> {
           //   iconData: Icons.check_circle_outline_outlined,
           //   message: 'success update data',
           // );
-
-          Logger.print('success');
-
+          Logger.print('success update data');
           Navigator.pop(context);
         }
         if (state is GroceriesUpdateError) {
@@ -419,6 +414,7 @@ class _GroceriesCUDPageState extends State<GroceriesCUDPage> {
           //   iconData: Icons.info_outlined,
           //   message: state.errorMessage,
           // );
+          Logger.print('failed');
         }
       },
       builder: (context, state) {
@@ -433,10 +429,10 @@ class _GroceriesCUDPageState extends State<GroceriesCUDPage> {
                 onPressed: () {
                   // validate first
                   if (!_formKey.currentState!.validate()) {
-                    Toast.showToast(
-                        iconColor: colorScheme.primary,
-                        iconData: Icons.info_outlined,
-                        message: 'please_fill_required');
+                    // Toast.showToast(
+                    //     iconColor: colorScheme.primary,
+                    //     iconData: Icons.info_outlined,
+                    //     message: 'please fill required');
                     return;
                   }
 
@@ -455,7 +451,6 @@ class _GroceriesCUDPageState extends State<GroceriesCUDPage> {
                             id: groceriesId ?? '', payload: payload));
                       });
                     }
-                    // send request
                   }
                 },
                 showLoading: state is GroceriesUpdateLoading,
