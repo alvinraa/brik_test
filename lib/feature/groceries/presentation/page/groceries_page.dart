@@ -218,10 +218,12 @@ class _GroceriesPageState extends State<GroceriesPage>
     return RefreshIndicator(
       onRefresh: () async {
         // get data again
-        // groceriesListBloc.add(GetGroceriesListRequest());
+        groceriesListBloc.add(GetGroceriesListRequest());
       },
       child: NotificationListener(
         onNotification: (ScrollNotification notification) {
+          // must be handle the pagination, but the api cant include param for size and page
+          // and the function on pagination not build yet in bloc.
           // return _handleScrollNotification(notification);
           return false;
         },
